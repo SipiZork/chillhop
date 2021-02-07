@@ -1,0 +1,27 @@
+nav {
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+  h1 {
+    color: rgba(230,230,230, .8);
+  }
+
+  .library-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgba(230,230,230, .8);
+    padding: .5rem;
+    transition: all .3s ease;
+    color: rgba(230,230,230, .8);
+    outline: none;
+
+    &:hover,
+    &.active {
+      background: rgb(65,65,65);
+      color: white;
+    }
+  }
+}
