@@ -15,7 +15,6 @@ function App() {
   // state
   const [songs, setSongs] = useState(data());
   const [currentSong, setCurrentSong] = useState(songs[0]);
-  const [newSong, setNewSong] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
@@ -52,17 +51,14 @@ function App() {
   }
 
   return (
-    <div className="App" style={{ background: currentSong.color[0] }}>
+    <div className={`App${libraryStatus ? ' library-active' : ''}`} style={{ background: currentSong.color[0] }}>
       <Nav
         libraryStatus={libraryStatus}
         setLibraryStatus={setLibraryStatus}
       />
       <Song
         currentSong={currentSong}
-        isPlaying={isPlaying}
-        songInfo={songInfo}
-        newSong={newSong}
-        setNewSong={setNewSong} />
+        songInfo={songInfo} />
       <Player
         songs={songs}
         setSongs={setSongs}
@@ -73,7 +69,6 @@ function App() {
         setIsPlaying={setIsPlaying}
         songInfo={songInfo}
         setSongInfo={setSongInfo}
-        setNewSong={setNewSong}
       />
       <Library
         libraryStatus={libraryStatus}
@@ -84,7 +79,6 @@ function App() {
         setCurrentSong={setCurrentSong}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
-        setNewSong={setNewSong}
       />
       <audio src={currentSong.audio} ref={audioRef} onTimeUpdate={timeUpdateHandler} onLoadedMetadata={timeUpdateHandler} onEnded={songEndHandler}></audio>
     </div>

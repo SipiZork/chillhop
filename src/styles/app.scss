@@ -33,8 +33,38 @@ body {
 }
 
 .App {
-  transition: all 1s;
+  transition: background 1s ease,
+              margin .5s ease;
   min-height: 100vh;
+
+  &.library-active {
+    margin-left: 20rem;
+
+    @media screen and (max-width: 768px){
+      margin-left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .App {
+    &.library-active {
+      .player {
+        .time-control {
+          width: 90%;
+        }
+        .play-control {
+          width: 60%;
+        }
+      }
+      .song-container {
+        .cover {
+          width: 60%;
+          max-width: 350px;
+        }
+      }
+    }
+  }
 }
 
 @import './song';

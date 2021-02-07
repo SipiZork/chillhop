@@ -1,16 +1,11 @@
 import React, {useState} from 'react';
 
-const Song = ({ currentSong, isPlaying, songInfo, newSong, setNewSong }) => {
+const Song = ({ currentSong, songInfo }) => {
 
-  if (newSong) {
-    setTimeout(() => {
-      setNewSong(false);
-    }, 1000);
-  }
 
   return (
     <div className="song-container">
-      <div className={`cover`} style={{ transform: `rotateZ(${songInfo.rotate}deg)`}}>
+      <div className={`cover`} style={{ transform: `rotateZ(${songInfo.rotate}deg)`, '--color': currentSong.color[0]}}>
         <img src={currentSong.cover} alt={currentSong.name}/>
       </div>
       <h2>{currentSong.name}</h2>
