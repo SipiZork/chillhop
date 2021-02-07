@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
 
-const Player = ({ audioRef, songInfo, setSongInfo, isPlaying, setIsPlaying, songs, setSongs, currentSong, setCurrentSong }) => {
+const Player = ({ audioRef, songInfo, setSongInfo, isPlaying, setIsPlaying, songs, setSongs, currentSong, setCurrentSong, mute }) => {
 
   const activeLibraryHandler = (nextSong) => {
     const newSongs = songs.map(song => {

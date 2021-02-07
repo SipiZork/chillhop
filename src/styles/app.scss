@@ -63,6 +63,9 @@ body {
           max-width: 350px;
         }
       }
+      .settings {
+        width: 60%;
+      }
     }
   }
 }
@@ -71,3 +74,4 @@ body {
 @import './player';
 @import './library';
 @import './nav';
+@import './volume';

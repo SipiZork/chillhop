@@ -4,10 +4,12 @@ import Player from './components/Player';
 import Song from './components/Song';
 import Library from './components/Library';
 import Nav from './components/Nav';
+import Volume from './components/Volume';
 
 import './styles/app.scss';
 
 import data from './data';
+import { logRoles } from '@testing-library/react';
 
 function App() {
   //ref
@@ -16,6 +18,8 @@ function App() {
   const [songs, setSongs] = useState(data());
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(50);
+  const [mute, setMute] = useState(false);
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
@@ -47,7 +51,25 @@ function App() {
   const songEndHandler = async () => {
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
-    if(isPlaying) audioRef.current.play();
+    if (isPlaying) audioRef.current.play(); audioRef.current.volume = volume / 100;
+    if (mute) audioRef.current.volume = 0;
+  }
+
+  const handleVolume = (e) => {
+    setVolume(e.target.value);
+    if (!mute) {
+      audioRef.current.volume = e.target.value / 100;
+    }
+  }
+
+  const muteHandler = async () => {
+    console.log('mute', mute);
+    if (!mute) {
+      audioRef.current.volume = 0;
+    } else {
+      audioRef.current.volume = volume / 100;
+    }
+    setMute(!mute);
   }
 
   return (
@@ -79,6 +101,14 @@ function App() {
         setCurrentSong={setCurrentSong}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
+      />
+      <Volume
+        currentSong={currentSong}
+        volume={volume}
+        handleVolume={handleVolume}
+        muteHandler={muteHandler}
+        mute={mute}
+        audioRef={audioRef}
       />
       <audio src={currentSong.audio} ref={audioRef} onTimeUpdate={timeUpdateHandler} onLoadedMetadata={timeUpdateHandler} onEnded={songEndHandler}></audio>
     </div>
