@@ -46,6 +46,10 @@
         border: 2px solid rgb(230,230,230);
         background:  black;
       }
+      &::-moz-range-thumb {
+        border: 2px solid rgb(230,230,230);
+        background:  black;
+      }
     }
 
     &:disabled {
@@ -53,6 +57,11 @@
       background:rgba(230,230,230, 1);
 
       &::-webkit-slider-thumb {
+        background: rgba(230,230,230, 1);
+        border: none;
+      }
+
+      &::-moz-range-thumb {
         background: rgba(230,230,230, 1);
         border: none;
       }
@@ -64,7 +73,15 @@
       border-radius: 10rem;
       background: rgb(230,230,230);
       border: 2px solid black;
-
     }
+
+    &::-moz-range-thumb {
+      appearance: none;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 10rem;
+      background: rgb(230,230,230);
+      border: 2px solid black;
+    } 
   }
 }

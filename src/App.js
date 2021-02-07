@@ -53,6 +53,20 @@ function App() {
     await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
     if (isPlaying) audioRef.current.play(); audioRef.current.volume = volume / 100;
     if (mute) audioRef.current.volume = 0;
+    const newSongs = songs.map(song => {
+      if (song.id === songs[(currentIndex + 1) % songs.length].id) {
+        return {
+          ...song,
+          active: true
+        };
+      } else {
+        return {
+          ...song,
+          active: false
+        };
+      }
+    });
+    setSongs(newSongs);
   }
 
   const handleVolume = (e) => {
