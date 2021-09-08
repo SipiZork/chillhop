@@ -125,7 +125,7 @@ function chillHop() {
       cover: 'https://i.scdn.co/image/ab67616d0000b2735bec6559d2aa16f9573b0986',
       color: ['#6B5B80', '#DD8D90'],
       id: uuidv4(),
-      audio: 'https://mp3.chillhop.com/serve.php/?mp3=22940',
+      audio: 'https://mp3.chillhop.com/serve.php/?mp3=21660',
       active: false
     },
   ]
