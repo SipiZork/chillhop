@@ -16,7 +16,7 @@ function App() {
   const audioRef = useRef(null);
   // state
   const [songs, setSongs] = useState(data());
-  const [currentSong, setCurrentSong] = useState(songs[0]);
+  const [currentSong, setCurrentSong] = useState(songs[11]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [mute, setMute] = useState(false);
